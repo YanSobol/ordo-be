@@ -22,6 +22,7 @@ public class AdminControllerV1 {
         this.userService = userService;
     }
 
+    //TODO probably here need to add something related to token. @PreAuthorize or something....
     @GetMapping(value = "users/{id}")
     public ResponseEntity<UserDto> getUserById(@PathVariable(name = "id") Long id){
         User user = userService.findById(id);
