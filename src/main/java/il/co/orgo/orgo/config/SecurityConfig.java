@@ -17,6 +17,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     //TODO I really not sure, but maybe should be one star, not two
     private static final String ADMIN_ENDPOINT = "/api/v1/admin/**";
     private static final String LOGIN_ENDPOINT = "/api/v1/auth/login";
+    private static final String SIGNUP_ENDPOINT = "/api/v1/signup";
 
 
     @Autowired
@@ -41,6 +42,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers(LOGIN_ENDPOINT).permitAll()
                 .antMatchers(ADMIN_ENDPOINT).hasRole("ADMIN")
+                .antMatchers(SIGNUP_ENDPOINT).permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .apply(new JwtConfigurer(jwtTokenProvider));
