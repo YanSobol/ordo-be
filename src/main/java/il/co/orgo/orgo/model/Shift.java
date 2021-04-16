@@ -2,7 +2,6 @@ package il.co.orgo.orgo.model;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import org.hibernate.mapping.Set;
 
 import javax.persistence.*;
 import java.util.Date;
