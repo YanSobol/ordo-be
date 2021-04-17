@@ -1,17 +1,22 @@
 package il.co.orgo.orgo.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import il.co.orgo.orgo.model.Status;
 import il.co.orgo.orgo.model.User;
-import liquibase.pro.packaged.U;
 import lombok.Data;
+
+import java.util.Date;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class UserDto {
+public class AdminUserDto {
+    private Long id;
+    private Date created;
     private String username;
     private String firstname;
     private String lastname;
     private String email;
+    private Status status;
 
     public User toUser(){
         User user = new User();
@@ -23,12 +28,15 @@ public class UserDto {
         return user;
     }
 
-    public static UserDto fromUser(User user){
-        UserDto userDto = new UserDto();
+    public static AdminUserDto fromUser(User user){
+        AdminUserDto userDto = new AdminUserDto();
+        userDto.setId(user.getId());
+        userDto.setCreated(user.getCreated());
         userDto.setUsername(user.getUsername());
         userDto.setFirstname(user.getFirstName());
         userDto.setLastname(user.getLastName());
         userDto.setEmail(user.getEmail());
+        userDto.setStatus(user.getStatus());
 
         return userDto;
     }
