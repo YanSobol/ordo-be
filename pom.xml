@@ -10,18 +10,20 @@
 		<relativePath/>
 		<!-- lookup parent from repository -->
 	</parent>
-	<groupId>il.co.orgo</groupId>
-	<artifactId>orgo</artifactId>
+	<groupId>il.co.ordo</groupId>
+	<artifactId>ordo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>orgo</name>
-	<description>orgo: shift and human resource manager for big companies.  </description>
+	<name>ordo</name>
+	<description>ordo: shift and human resource manager for big companies.  </description>
 	<properties>
 		<java.version>1.8</java.version>
 		<mysql.connector.version>8.0.15</mysql.connector.version>
 		<jsonwebtoken.version>0.11.2</jsonwebtoken.version>
 		<org.projectlombok.version>1.18.20</org.projectlombok.version>
+		<org.hibernate.version>3.5.6-Final</org.hibernate.version>
 	</properties>
 	<dependencies>
+<!--		springframework.boot-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -35,20 +37,31 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+<!--		hibernate-->
+		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-annotations</artifactId>
-			<version>3.5.6-Final</version>
+			<version>${org.hibernate.version}</version>
 		</dependency>
+<!--		security-->
 		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+<!--			mySQL-->
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>${mysql.connector.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
-		</dependency>
-		<dependency>
+<!--			JWT-->
 			<groupId>io.jsonwebtoken</groupId>
 			<artifactId>jjwt-orgjson</artifactId>
 			<version>${jsonwebtoken.version}</version>
@@ -56,34 +69,25 @@
 		<dependency>
 			<groupId>io.jsonwebtoken</groupId>
 			<artifactId>jjwt-api</artifactId>
-			<version>0.11.2</version>
+			<version>${jsonwebtoken.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>io.jsonwebtoken</groupId>
 			<artifactId>jjwt-impl</artifactId>
-			<version>0.11.2</version>
+			<version>${jsonwebtoken.version}</version>
 			<scope>runtime</scope>
 		</dependency>
+<!--		liquibase-->
 		<dependency>
 			<groupId>org.liquibase</groupId>
 			<artifactId>liquibase-core</artifactId>
 		</dependency>
-
+<!--		lombok-->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<version>${org.projectlombok.version}</version>
 			<optional>true</optional>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-test</artifactId>
-			<scope>test</scope>
 		</dependency>
 	</dependencies>
 
