@@ -15,11 +15,18 @@ public class Shift extends BaseEntity{
     @Column(name = "name")
     private String name;
 
+    @Column(name = "date")
+    private Date date;
+
     @Column(name = "start_time")
     private Date startTime;
 
     @Column(name = "end_time")
     private Date endTime;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "state")
+    private ShiftState shiftState;
 
     // mappedBy = "shifts": description of mapping and connection between User and Shift in class User->roles
     @ManyToMany(mappedBy = "roles", fetch = FetchType.LAZY)

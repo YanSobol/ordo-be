@@ -100,6 +100,22 @@
         </createTable>
     </changeSet>
 
+    <changeSet id="1.0.2.1" author="yan.sobol">
+        <addColumn tableName="shifts">
+            <column name="state" type="VARCHAR(25)" defaultValue="CUSTOM">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="1.0.2.2" author="yan.sobol">
+        <addColumn tableName="shifts">
+            <column name="date" type="TIMESTAMP" defaultValue="CURRENT_TIMESTAMP()">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+
     <changeSet id="1.0.3" author="yan.sobol">
         <createTable tableName="user_roles">
             <column name="user_id" type="BIGINT">
