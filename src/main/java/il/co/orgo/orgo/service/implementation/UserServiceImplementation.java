@@ -1,6 +1,7 @@
 package il.co.orgo.orgo.service.implementation;
 
 import il.co.orgo.orgo.model.Role;
+import il.co.orgo.orgo.model.Shift;
 import il.co.orgo.orgo.model.Status;
 import il.co.orgo.orgo.model.User;
 import il.co.orgo.orgo.repository.RoleRepository;
@@ -32,6 +33,14 @@ public class UserServiceImplementation implements UserService {
         this.roleRepository = roleRepository;
         this.shiftRepository = shiftRepository;
         this.passwordEncoder = passwordEncoder;
+    }
+
+    public void shiftAdd(User user){
+        Shift shiftUser = shiftRepository.findByName("MORNING");
+        List<Shift> userShifts = new ArrayList<>();
+        userShifts.add(shiftUser);
+        user.setShifts(userShifts);
+        userRepository.save(user);
     }
 
     @Override
