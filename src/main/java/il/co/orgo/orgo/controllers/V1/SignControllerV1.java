@@ -1,6 +1,7 @@
 package il.co.orgo.orgo.controllers.V1;
 import il.co.orgo.orgo.dto.SignRequestDto;
 import il.co.orgo.orgo.service.UserService;
+import il.co.orgo.orgo.service.implementation.UserServiceImplementation;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -19,7 +20,9 @@ public class SignControllerV1 {
     @PostMapping("signup")
     public String sign(@RequestBody SignRequestDto signRequestDto) {
 
+        userService.addShift
         userService.register(signRequestDto.fromDtoToUser(signRequestDto));
+     //   userService.shiftAdd(signRequestDto.fromDtoToUser(signRequestDto));
         return "api/v1/auth/login";
     }
 }

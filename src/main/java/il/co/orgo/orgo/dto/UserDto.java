@@ -2,7 +2,6 @@ package il.co.orgo.orgo.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import il.co.orgo.orgo.model.User;
-import liquibase.pro.packaged.U;
 import lombok.Data;
 
 @Data
