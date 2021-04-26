@@ -24,10 +24,6 @@ public class Shift extends BaseEntity{
     @Column(name = "end_time")
     private Date endTime;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "state")
-    private ShiftState shiftState;
-
     // mappedBy = "shifts": description of mapping and connection between User and Shift in class User->roles
     @ManyToMany(mappedBy = "roles", fetch = FetchType.LAZY)
     private List<User> users;

@@ -20,7 +20,6 @@ public class SignControllerV1 {
     @PostMapping("signup")
     public String sign(@RequestBody SignRequestDto signRequestDto) {
 
-        userService.addShift
         userService.register(signRequestDto.fromDtoToUser(signRequestDto));
      //   userService.shiftAdd(signRequestDto.fromDtoToUser(signRequestDto));
         return "api/v1/auth/login";
