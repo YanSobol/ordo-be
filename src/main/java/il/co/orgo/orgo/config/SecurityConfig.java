@@ -9,12 +9,13 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @Configuration
+@EnableWebMvc
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final JwtTokenProvider jwtTokenProvider;
-    //TODO I really not sure, but maybe should be one star, not two
     private static final String ADMIN_ENDPOINT = "/api/v1/admin/**";
     private static final String LOGIN_ENDPOINT = "/api/v1/auth/login";
     private static final String SIGNUP_ENDPOINT = "/api/v1/signup";
