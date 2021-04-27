@@ -22,6 +22,6 @@ public class Shift extends BaseEntity{
     private Date endTime;
 
     // mappedBy = "shifts": description of mapping and connection between User and Shift in class User->roles
-    @ManyToMany(mappedBy = "roles", fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "shifts", fetch = FetchType.LAZY)
     private List<User> users;
 }
