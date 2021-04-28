@@ -43,4 +43,11 @@ public class User extends BaseEntity{
             inverseJoinColumns = {@JoinColumn(name = "shift_id",referencedColumnName = "id")})
     private List<Shift> shifts;
 
+    @ManyToMany(fetch = FetchType.EAGER)
+    @Fetch(value = FetchMode.SUBSELECT)
+    @JoinTable(name = "user_schedule", joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "shift_id",referencedColumnName = "id")})
+    private List<Shift> schedule;
+
+
 }
