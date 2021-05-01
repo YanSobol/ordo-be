@@ -1,13 +1,15 @@
-version: "2.1"
-
+version: "3.9"
 networks:
   test:
+volumes:
+  db_data: { }
 
 services:
   db:
     image: mysql:latest
+    volumes:
+      - db_data:/var/lib/mysql
     restart: always
-    command: --default-authentication-plugin=mysql_native_password
     ports:
       - "3306:3306"
     environment:
@@ -17,10 +19,11 @@ services:
       MYSQL_PASSWORD: password
     networks:
       - test
+
   app:
     build:
       context: .
-      dockerfile: Dockerfile_debug
+      dockerfile: Dockerfile-debug
     ports:
       - "8075:8075"
       - "5005:5005"
