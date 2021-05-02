@@ -1,0 +1,10 @@
+FROM openjdk:8
+
+RUN apt-get update && apt-get install -y maven
+COPY . /project
+RUN  cd /project && mvn clean package
+EXPOSE 8075 5005
+
+#ENTRYPOINT ["java","this part for debug is moved into compose file, into "command"]
+
+
