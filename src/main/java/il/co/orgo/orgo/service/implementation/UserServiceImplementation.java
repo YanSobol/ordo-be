@@ -51,7 +51,7 @@ public class UserServiceImplementation implements UserService {
     @Override
     public List<User> getAll() {
         List<User> allUsers = userRepository.findAll();
-        log.info("IN getAll - {} users found",allUsers);
+        log.info("IN getAll - {} users found", allUsers);
         return allUsers;
     }
 
@@ -65,7 +65,7 @@ public class UserServiceImplementation implements UserService {
     @Override
     public User findById(Long id) {
         User user = userRepository.findById(id).orElse(null);
-        if(user == null){
+        if (user == null) {
             log.warn("IN findByUsername - no user found by id: {}", id);
             return null;
         }
@@ -76,6 +76,6 @@ public class UserServiceImplementation implements UserService {
     @Override
     public void delete(Long id) {
         userRepository.deleteById(id);
-        log.info("IN delete - user with id: {}, successfully deleted",id);
+        log.info("IN delete - user with id: {}, successfully deleted", id);
     }
 }

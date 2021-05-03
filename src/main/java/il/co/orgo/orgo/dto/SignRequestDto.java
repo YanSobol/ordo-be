@@ -18,7 +18,7 @@ public class SignRequestDto {
 
     private String password;
 
-    public User fromDtoToUser(SignRequestDto signRequestDto){
+    public User fromDtoToUser(SignRequestDto signRequestDto) {
 
         User newUser = new User();
         newUser.setUsername(signRequestDto.getUsername());
@@ -29,7 +29,6 @@ public class SignRequestDto {
         newUser.setCreated(new Date());
         newUser.setUpdated(new Date());
         return newUser;
-
 
 
     }

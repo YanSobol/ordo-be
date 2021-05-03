@@ -11,7 +11,7 @@ import java.util.List;
 @Entity
 @Table(name = "shifts")
 @Data
-public class Shift extends BaseEntity{
+public class Shift extends BaseEntity {
     @Column(name = "name")
     private String name;
 

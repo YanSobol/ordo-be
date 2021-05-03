@@ -1,6 +1,5 @@
 package il.co.orgo.orgo.controllers.V1;
 
-import il.co.orgo.orgo.dto.AdminUserDto;
 import il.co.orgo.orgo.dto.UserDto;
 import il.co.orgo.orgo.model.User;
 import il.co.orgo.orgo.service.UserService;
@@ -25,10 +24,10 @@ public class UserRestControllerV1 {
 
     // Here we get cut information about users by id
     @GetMapping(value = "users/{id}")
-    public ResponseEntity<UserDto> getUserById(@PathVariable(name = "id") Long id){
+    public ResponseEntity<UserDto> getUserById(@PathVariable(name = "id") Long id) {
         User user = userService.findById(id);
 
-        if(user == null) return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        if (user == null) return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 
         UserDto result = UserDto.fromUser(user);
         return new ResponseEntity<>(result, HttpStatus.OK);

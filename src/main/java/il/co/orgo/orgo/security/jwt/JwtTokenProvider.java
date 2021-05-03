@@ -38,20 +38,20 @@ public class JwtTokenProvider {
     private UserDetailsService userDetailsService;
 
     @Bean
-    public BCryptPasswordEncoder bCryptPasswordEncoder(){
+    public BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
     @PostConstruct
-    protected void init(){
+    protected void init() {
         encryption = Base64.getEncoder().encodeToString(encryption.getBytes());
     }
 
-    public String createToken(User user){
+    public String createToken(User user) {
 
         SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
         byte[] encryptionByteKey = DatatypeConverter.parseBase64Binary(encryption);
-        Key signingKey = new SecretKeySpec(encryptionByteKey,signatureAlgorithm.getJcaName());
+        Key signingKey = new SecretKeySpec(encryptionByteKey, signatureAlgorithm.getJcaName());
 
         Claims claims = Jwts.claims().setSubject(user.getUsername());
         claims.put("roles", getRolesNames(user.getRoles()));
@@ -65,36 +65,35 @@ public class JwtTokenProvider {
                 .compact();
     }
 
-    public Authentication getAuthentication(String token){
+    public Authentication getAuthentication(String token) {
         UserDetails userDetails = this.userDetailsService.loadUserByUsername(getUsername(token));
-        return new UsernamePasswordAuthenticationToken(userDetails,"",userDetails.getAuthorities());
+        return new UsernamePasswordAuthenticationToken(userDetails, "", userDetails.getAuthorities());
     }
 
     private String getUsername(String token) {
         return Jwts.parserBuilder().setSigningKey(encryption).build().parseClaimsJws(token).getBody().getSubject();
     }
 
-    public String resolveToken(HttpServletRequest request){
+    public String resolveToken(HttpServletRequest request) {
         String bearerToken = request.getHeader("Authorization");
-        if(bearerToken != null && bearerToken.startsWith("Bearer_")){
+        if (bearerToken != null && bearerToken.startsWith("Bearer_")) {
             return bearerToken.substring(7, bearerToken.length());
         }
         return null;
     }
 
-    public boolean validateToken(String token){
+    public boolean validateToken(String token) {
 
-        try{
+        try {
             Jws<Claims> claimsJws = Jwts.parserBuilder().setSigningKey(encryption).build().parseClaimsJws(token);
             return !claimsJws.getBody().getExpiration().before(new Date());
-        }
-        catch (JwtException | IllegalArgumentException exception){
+        } catch (JwtException | IllegalArgumentException exception) {
             throw new JwtAuthenticationException("JWT token expired or invalid");
         }
 
     }
 
-    private List<String> getRolesNames(List<Role> userRoles){
+    private List<String> getRolesNames(List<Role> userRoles) {
         List<String> roleNames = new ArrayList<>();
 
         userRoles.forEach(role -> {
