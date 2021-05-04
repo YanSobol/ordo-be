@@ -16,14 +16,14 @@ public final class JwtUserFactory {
     }
 
     //Method to convert model.User to jwt.User
-    public static JwtUser create(User user){
+    public static JwtUser create(User user) {
         return new JwtUser(user.getId(), user.getUsername(), user.getFirstName(),
                 user.getLastName(), user.getPassword(), user.getEmail(), user.getStatus().equals(Status.ACTIVE),
                 user.getUpdated(), mapToGrantedAuthorities(new ArrayList<>(user.getRoles())));
     }
 
     //Method to convert Users roles to authorities
-    private static List<GrantedAuthority> mapToGrantedAuthorities(List<Role> userRoles){
+    private static List<GrantedAuthority> mapToGrantedAuthorities(List<Role> userRoles) {
         return userRoles.stream()
                 .map(role -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList());
     }
