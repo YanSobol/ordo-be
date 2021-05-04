@@ -15,6 +15,9 @@ public class Shift extends BaseEntity {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "author_id")
+    private Long author_id;
+
     @Column(name = "start_time")
     private Date startTime;
 

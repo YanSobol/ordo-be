@@ -1,0 +1,52 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="04.05.21_init_roles_id_1" author="yan.sobol">
+        <createTable tableName="roles">
+            <column name="id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="04.05.21_init_roles_id_2" author="yan.sobol">
+        <addPrimaryKey tableName="roles" columnNames="id"/>
+    </changeSet>
+
+    <changeSet id="04.05.21_init_roles_id_3" author="yan.sobol">
+        <addAutoIncrement tableName="roles" columnName="id" columnDataType="BIGINT"/>
+    </changeSet>
+
+    <changeSet id="04.05.21_init_roles_name" author="yan.sobol">
+        <addColumn tableName="roles">
+            <column name="name" type="VARCHAR(100)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="04.05.21_init_roles_created" author="yan.sobol">
+        <addColumn tableName="roles">
+            <column name="created" type="TIMESTAMP" defaultValue="CURRENT_TIMESTAMP()">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="04.05.21_init_roles_updated" author="yan.sobol">
+        <addColumn tableName="roles">
+            <column name="updated" type="TIMESTAMP" defaultValue="CURRENT_TIMESTAMP()">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="04.05.21_init_roles_status" author="yan.sobol">
+        <addColumn tableName="roles">
+            <column name="status" type="VARCHAR(25)" defaultValue="ACTIVE">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+
+</databaseChangeLog>
