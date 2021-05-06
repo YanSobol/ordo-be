@@ -8,4 +8,5 @@ public interface IShiftsOptionsService {
 
     void submitUserShiftsOptions(ShiftsOptions options);
     void submitUserShiftsOptions(List<ShiftsOptions> options);
+    List<ShiftsOptions> getAll();
 }

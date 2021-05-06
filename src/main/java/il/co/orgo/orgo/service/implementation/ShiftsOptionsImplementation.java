@@ -24,13 +24,19 @@ public class ShiftsOptionsImplementation implements IShiftsOptionsService {
     @Override
     public void submitUserShiftsOptions(ShiftsOptions options) {
         iShiftsOptionsRepository.save(options);
+        log.info("IN ShiftsOptionsImplementation.submitUserShiftsOptions, shifts options ware submitted");
     }
 
     @Override
     public void submitUserShiftsOptions(List<ShiftsOptions> shiftsOptions) {
+        shiftsOptions.forEach(iShiftsOptionsRepository::save);
+        log.info("IN ShiftsOptionsImplementation.submitUserShiftsOptions, shifts options ware submitted");
+    }
 
-        shiftsOptions.forEach(options -> {
-            iShiftsOptionsRepository.save(options);
-        });
+    @Override
+    public List<ShiftsOptions> getAll() {
+        List<ShiftsOptions> allShiftsOptions = iShiftsOptionsRepository.findAll();
+        log.info("IN ShiftsOptionsImplementation.getAll - {} shifts options found", allShiftsOptions);
+        return allShiftsOptions;
     }
 }
