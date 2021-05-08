@@ -18,17 +18,7 @@ public class AdminUserDto {
     private String email;
     private Status status;
 
-    public User toUser(){
-        User user = new User();
-        user.setUsername(username);
-        user.setFirstName(firstname);
-        user.setLastName(lastname);
-        user.setEmail(email);
-
-        return user;
-    }
-
-    public static AdminUserDto fromUser(User user){
+    public static AdminUserDto fromUser(User user) {
         AdminUserDto userDto = new AdminUserDto();
         userDto.setId(user.getId());
         userDto.setCreated(user.getCreated());
@@ -39,5 +29,15 @@ public class AdminUserDto {
         userDto.setStatus(user.getStatus());
 
         return userDto;
+    }
+
+    public User toUser() {
+        User user = new User();
+        user.setUsername(username);
+        user.setFirstName(firstname);
+        user.setLastName(lastname);
+        user.setEmail(email);
+
+        return user;
     }
 }

@@ -1,0 +1,14 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+
+    <include file="04.05.21_init_user_table_1.xml" relativeToChangelogFile="true"/>
+    <include file="04.05.21_init_shifts_table_1.xml" relativeToChangelogFile="true"/>
+    <include file="04.05.21_init_shifts_options_table.xml" relativeToChangelogFile="true"/>
+    <include file="04.05.21_init_roles_table_1.xml" relativeToChangelogFile="true"/>
+    <include file="04.05.21_init_user_roles_table.xml" relativeToChangelogFile="true"/>
+    <include file="04.05.21_role_insert.xml" relativeToChangelogFile="true"/>
+
+</databaseChangeLog>

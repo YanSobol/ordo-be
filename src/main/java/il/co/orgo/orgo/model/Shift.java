@@ -11,9 +11,12 @@ import java.util.List;
 @Entity
 @Table(name = "shifts")
 @Data
-public class Shift extends BaseEntity{
+public class Shift extends BaseEntity {
     @Column(name = "name")
     private String name;
+
+    @Column(name = "author_id")
+    private Long author_id;
 
     @Column(name = "start_time")
     private Date startTime;
@@ -21,7 +24,4 @@ public class Shift extends BaseEntity{
     @Column(name = "end_time")
     private Date endTime;
 
-    // mappedBy = "shifts": description of mapping and connection between User and Shift in class User->roles
-    @ManyToMany(mappedBy = "shifts", fetch = FetchType.LAZY)
-    private List<User> users;
 }

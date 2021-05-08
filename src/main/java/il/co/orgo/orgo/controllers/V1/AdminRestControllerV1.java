@@ -22,12 +22,12 @@ public class AdminRestControllerV1 {
         this.userService = userService;
     }
 
-//  Here we check users by id and get ALL information about them
+    //  Here we check users by id and get ALL information about them
     @GetMapping(value = "users/{id}")
-    public ResponseEntity<AdminUserDto> getUserById(@PathVariable(name = "id") Long id){
+    public ResponseEntity<AdminUserDto> getUserById(@PathVariable(name = "id") Long id) {
         User user = userService.findById(id);
 
-        if(user == null) return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        if (user == null) return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 
         AdminUserDto result = AdminUserDto.fromUser(user);
         return new ResponseEntity<>(result, HttpStatus.OK);
