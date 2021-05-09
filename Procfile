@@ -1,1 +1,1 @@
-web: java -Dspring.profiles.active=production -Dserver.port=$PORT -Xmx -jar /project/target/orgo-0.0.1-SNAPSHOT.jar
+web: java -Dspring.profiles.active=production -Xmx -jar /project/target/orgo-0.0.1-SNAPSHOT.jar --port $PORT
