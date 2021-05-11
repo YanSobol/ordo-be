@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Data
-public class ShiftsListDTO {
+public class ScheduleListDto {
 
     List<ShiftsOptionsDTO> options;
 
@@ -15,13 +15,6 @@ public class ShiftsListDTO {
         options = new ArrayList<ShiftsOptionsDTO>();
         shiftsOptions.forEach(shiftsOptionsVar -> {
             options.add(new ShiftsOptionsDTO().toShiftsOptionsDTO(shiftsOptionsVar));
-        });
-    }
-
-    public void fromDtoToShiftsOptions(List<ShiftsOptionsDTO> shiftsOptionsDto){
-        List<ShiftsOptions> shiftsOptions = new ArrayList<ShiftsOptions>();
-        shiftsOptionsDto.forEach(optionsDto->{
-            shiftsOptions.add(optionsDto.toShiftsOptions(optionsDto));
         });
     }
 }
