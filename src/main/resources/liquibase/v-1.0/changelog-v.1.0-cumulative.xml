@@ -11,5 +11,10 @@
     <include file="04.05.21_init_roles_table_1.xml" relativeToChangelogFile="true"/>
     <include file="04.05.21_init_user_roles_table.xml" relativeToChangelogFile="true"/>
     <include file="04.05.21_role_insert.xml" relativeToChangelogFile="true"/>
+<!--    updates: 12.05.21 -->
+    <include file="12.05.21_schedule_table.xml" relativeToChangelogFile="true"/>
+    <include file="12.05.21_init_user_table.xml" relativeToChangelogFile="true"/>
+    <include file="12.05.21_init_shifts_options_table.xml" relativeToChangelogFile="true"/>
+    <include file="12.05.21_init_roles_table_1.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>

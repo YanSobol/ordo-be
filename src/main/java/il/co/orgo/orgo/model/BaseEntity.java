@@ -9,10 +9,14 @@ import java.util.Date;
 
 @MappedSuperclass
 @Data
-public class BaseEntity {
+public abstract class BaseEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "author_id")
+    private Long author_id;
 
     @CreatedDate
     @Column(name = "created")
@@ -25,4 +29,5 @@ public class BaseEntity {
     @Enumerated(EnumType.STRING)
     @Column(name = "status")
     private Status status;
+
 }

@@ -29,7 +29,7 @@ public class UserRestControllerV1 {
 
         if (user == null) return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 
-        UserDto result = UserDto.fromUser(user);
+        UserDto result = null; //UserDto.fromUser(user);
         return new ResponseEntity<>(result, HttpStatus.OK);
 
     }

@@ -41,6 +41,8 @@ public class UserServiceImplementation implements UserService {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRoles(userRoles);
         user.setStatus(Status.ACTIVE);
+        //TODO Add author_id add logic
+        user.setAuthor_id(101L);
 
         User registeredUser = userRepository.save(user);
         log.info("IN register - user: {} successfully registered", registeredUser);
