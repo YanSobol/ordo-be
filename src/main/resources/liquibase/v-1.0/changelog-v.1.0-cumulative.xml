@@ -7,6 +7,7 @@
     <include file="04.05.21_init_user_table_1.xml" relativeToChangelogFile="true"/>
     <include file="04.05.21_init_shifts_table_1.xml" relativeToChangelogFile="true"/>
     <include file="04.05.21_init_shifts_options_table.xml" relativeToChangelogFile="true"/>
+    <include file="05.05.21_schedule_table.xml" relativeToChangelogFile="true"/>
     <include file="04.05.21_init_roles_table_1.xml" relativeToChangelogFile="true"/>
     <include file="04.05.21_init_user_roles_table.xml" relativeToChangelogFile="true"/>
     <include file="04.05.21_role_insert.xml" relativeToChangelogFile="true"/>
