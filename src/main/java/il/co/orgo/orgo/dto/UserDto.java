@@ -8,11 +8,9 @@ import lombok.Data;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class UserDto extends BaseDto {
 
-    private String username;
+    private String firstName;
 
     private String password;
-
-    private String firstName;
 
     private String lastName;
 

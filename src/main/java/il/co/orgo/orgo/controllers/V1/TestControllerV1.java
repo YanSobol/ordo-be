@@ -2,9 +2,14 @@ package il.co.orgo.orgo.controllers.V1;
 
 import il.co.orgo.orgo.dto.ShiftsListDTO;
 import il.co.orgo.orgo.dto.ShiftsOptionsDTO;
+import il.co.orgo.orgo.dto.UserDto;
+import il.co.orgo.orgo.dto.UserSignupDto;
+import il.co.orgo.orgo.mapper.UserMapper;
 import il.co.orgo.orgo.model.ShiftsOptions;
+import il.co.orgo.orgo.model.User;
 import il.co.orgo.orgo.service.IScheduleService;
 import il.co.orgo.orgo.service.IShiftsOptionsService;
+import il.co.orgo.orgo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,11 +23,15 @@ public class TestControllerV1 {
 
     private final IShiftsOptionsService shiftsOptionsService;
     private final IScheduleService iScheduleService;
+    private final UserService userService;
+    private final UserMapper mapper;
 
     @Autowired
-    public TestControllerV1(IShiftsOptionsService shiftsOptionsService, IScheduleService iScheduleService) {
+    public TestControllerV1(IShiftsOptionsService shiftsOptionsService, IScheduleService iScheduleService, UserService userService, UserMapper mapper) {
         this.shiftsOptionsService = shiftsOptionsService;
         this.iScheduleService = iScheduleService;
+        this.userService = userService;
+        this.mapper = mapper;
     }
 
     @PostMapping("submit_options")
@@ -53,5 +62,19 @@ public class TestControllerV1 {
 
         return shiftsListDTO;
     }
+    @PostMapping("signup")
+    public UserDto sign(@RequestBody UserDto signRequestDto) {
 
+        User user = mapper.toEntity(signRequestDto);
+        userService.register(user);
+        return mapper.toDto(user);
+    }
+
+    @PostMapping("signup1")
+    public UserDto sign1(@RequestBody UserSignupDto signRequestDto) {
+
+        User user = mapper.toEntity(signRequestDto);
+        userService.register(user);
+        return mapper.toDto(user);
+    }
 }

@@ -3,7 +3,7 @@ package il.co.orgo.orgo.dto;
 import lombok.Data;
 
 @Data
-public class UserSignupDto {
+public class UserSignupDto extends BaseDto {
 
     private String username;
 

@@ -13,8 +13,6 @@ public class AdminUserDto extends BaseDto {
 
     private Long id;
 
-    private Date created;
-
     private String username;
 
     private String firstname;
@@ -22,6 +20,8 @@ public class AdminUserDto extends BaseDto {
     private String lastname;
 
     private String email;
+
+    private Date created;
 
     private Status status;
 
