@@ -7,8 +7,8 @@ volumes:
 services:
   db:
     image: mysql:latest
-#    volumes:
-#      - db_data:/var/lib/mysql
+    volumes:
+      - db_data:/var/lib/mysql
     restart: always
     ports:
       - "3306:3306"
@@ -31,7 +31,8 @@ services:
       - test
     depends_on:
       - db
-    command: java -agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=5005 -jar /project/target/orgo-0.0.1-SNAPSHOT.jar
+    command: java -agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=5005 -jar orgo-0.0.1-SNAPSHOT.jar
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://user:password@db:3306/ordo?reconnect=true&&allowPublicKeyRetrieval=true&&useSSL=false
       SPRING_PROFILES_ACTIVE: local
+      PORT: 8075
