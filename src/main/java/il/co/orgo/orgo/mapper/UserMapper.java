@@ -40,16 +40,15 @@ public class UserMapper extends BaseMapper<User, UserDto> {
     @PostConstruct
     public void setupUserMapper(){
         modelMapper.createTypeMap(UserDto.class, User.class)
-//                .addMappings(m -> m.skip(User::setCreated))
-//                .addMappings(m -> m.skip(User::setUpdated))
                 .setPostConverter(toEntityConverter());
+
+        modelMapper.createTypeMap(UserSignupDto.class, User.class)
+                .setPostConverter(SignupEntityConverter());
     }
 
     @PostConstruct
     public void setupSignupMapper(){
         modelMapper.createTypeMap(UserSignupDto.class, User.class)
-//                .addMappings(m -> m.skip(User::setCreated))
-//                .addMappings(m -> m.skip(User::setUpdated))
                 .setPostConverter(SignupEntityConverter());
     }
 
@@ -67,7 +66,7 @@ public class UserMapper extends BaseMapper<User, UserDto> {
     }
 
     @Override
-    public Converter<UserDto, User> toEntityConverter() {
+    public Converter<UserDto, User> toEntityConverter(long autor, ) {
         return mappingContext -> {
             User destination = mappingContext.getDestination();
             destination.setCreated(new Date());
