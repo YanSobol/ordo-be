@@ -66,10 +66,10 @@ public class UserServiceImplementation implements UserService {
     public User findById(Long id) {
         User user = userRepository.findById(id).orElse(null);
         if (user == null) {
-            log.warn("IN findByUsername - no user found by id: {}", id);
+            log.warn("IN findById - no user found by id: {}", id);
             return null;
         }
-        log.info("IN findByUsername - user: {}, found by id: {}", user, id);
+        log.info("IN findById - user: {}, found by id: {}", user, id);
         return user;
     }
 
