@@ -1,11 +1,14 @@
 package il.co.orgo.orgo.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import il.co.orgo.orgo.model.Role;
 import il.co.orgo.orgo.model.Status;
 import il.co.orgo.orgo.model.User;
 import lombok.Data;
 
 import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -17,6 +20,7 @@ public class AdminUserDto {
     private String lastname;
     private String email;
     private Status status;
+    private List<String> roles;
 
     public static AdminUserDto fromUser(User user) {
         AdminUserDto userDto = new AdminUserDto();
@@ -27,6 +31,7 @@ public class AdminUserDto {
         userDto.setLastname(user.getLastName());
         userDto.setEmail(user.getEmail());
         userDto.setStatus(user.getStatus());
+        userDto.setRoles(user.getRoles().stream().map(Role::getName).collect(Collectors.toList()));
 
         return userDto;
     }
