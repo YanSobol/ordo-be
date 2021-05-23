@@ -19,7 +19,7 @@ public abstract class BaseEntity {
     private Long author_id;
 
     @CreatedDate
-    @Column(name = "created")
+    @Column(name = "created", updatable = false)
     private Date created;
 
     @LastModifiedDate

@@ -1,9 +1,9 @@
 package il.co.orgo.orgo.controllers.V1;
 
 import il.co.orgo.orgo.dto.UserDto;
-import il.co.orgo.orgo.mapper.UserMapper;
 import il.co.orgo.orgo.model.User;
 import il.co.orgo.orgo.service.UserService;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,11 +16,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "api/v1/")
 public class SignControllerV1 {
 
-    private final UserMapper mapper;
+    private final ModelMapper mapper;
     private final UserService userService;
 
     @Autowired
-    public SignControllerV1(UserMapper mapper, UserService userService) {
+    public SignControllerV1(ModelMapper mapper, UserService userService) {
         this.mapper = mapper;
         this.userService = userService;
     }
@@ -28,8 +28,8 @@ public class SignControllerV1 {
     @PostMapping("signup")
     public UserDto sign(@RequestBody UserDto signRequestDto) {
 
-        User user = mapper.toEntity(signRequestDto);
+        User user = mapper.map(signRequestDto, User.class);
         userService.register(user);
-        return mapper.toDto(user);
+        return mapper.map(user, UserDto.class);
     }
 }
